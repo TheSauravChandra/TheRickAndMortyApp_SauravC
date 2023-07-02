@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.util.Pair
+import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -138,6 +139,11 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.getErr().observe(this, {
             toast(it)
+        })
+
+        viewModel.getLoading().observe(this, {
+            // loading pokeball
+            binding.pbLoading.visibility = if (it) View.VISIBLE else View.GONE
         })
 
     }

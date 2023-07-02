@@ -16,4 +16,16 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/pbLoading"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:background="@mipmap/ic_loader"
+        android:indeterminate="true"
+        android:indeterminateBehavior="cycle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/rvList"
+        app:layout_constraintStart_toStartOf="@+id/rvList"
+        app:layout_constraintTop_toTopOf="@+id/rvList" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
