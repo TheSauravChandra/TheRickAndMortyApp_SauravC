@@ -13,7 +13,7 @@ data class Creature(
     @SerializedName("id")
     val id: Int,
     @SerializedName("image")
-    val image: String,
+    val image: String?,
     @SerializedName("location")
     val location: Location,
     @SerializedName("name")
