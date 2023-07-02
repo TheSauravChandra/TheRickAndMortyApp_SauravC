@@ -23,6 +23,15 @@ class CreatureAdapter(private val context: Context) : RecyclerView.Adapter<Creat
 
     fun getList() = list
 
+    fun updateList(items: ArrayList<Creature>) {
+        // diff util delegated
+        val old = list
+        // old & new lists taken, magic done & minimal steps poured to update UI.
+        val diffRes: DiffUtil.DiffResult = DiffUtil.calculateDiff(CreatureDiffUtil(old, items))
+        list = items
+        diffRes.dispatchUpdatesTo(this)
+    }
+
     inner class ViewHolder(var binding: CreatureMiniCardBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun setData(data: Creature?) {
@@ -58,5 +67,20 @@ class CreatureAdapter(private val context: Context) : RecyclerView.Adapter<Creat
     }
 
     override fun getItemCount() = list.size
+
+    class CreatureDiffUtil(private val oldList: ArrayList<Creature>, private val newList: ArrayList<Creature>) : DiffUtil.Callback() {
+        override fun getOldListSize() = oldList.size
+
+        override fun getNewListSize() = newList.size
+
+        override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return oldList[oldItemPosition].id == newList[newItemPosition].id
+        }
+
+        override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return oldList[oldItemPosition] == newList[newItemPosition]
+        }
+
+    }
 
 }
