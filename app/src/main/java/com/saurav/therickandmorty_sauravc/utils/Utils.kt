@@ -25,7 +25,8 @@ class Utils {
         @JvmStatic
         fun hideKeyboard(context: Context, view: View?) {
             if (view != null) {
-                val imm: InputMethodManager = (context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager)!!
+                val imm: InputMethodManager =
+                    (context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager)!!
                 if (imm.isAcceptingText) {
                     imm.hideSoftInputFromWindow(view.windowToken, 0)
                 }
@@ -34,7 +35,8 @@ class Utils {
 
         @JvmStatic
         fun showKeyboard(context: Context, editText: EditText?) {
-            val imm: InputMethodManager = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            val imm: InputMethodManager =
+                context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             imm.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT)
         }
 

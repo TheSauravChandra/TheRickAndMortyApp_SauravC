@@ -1,8 +1,8 @@
 package com.saurav.therickandmorty_sauravc.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.google.gson.Gson
 import com.saurav.therickandmorty_sauravc.beans.Creature

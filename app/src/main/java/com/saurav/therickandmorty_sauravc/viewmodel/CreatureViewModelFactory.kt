@@ -4,7 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.saurav.therickandmorty_sauravc.repo.CreatureRepo
 
-class CreatureViewModelFactory constructor(private val repository: CreatureRepo) : ViewModelProvider.Factory {
+class CreatureViewModelFactory constructor(private val repository: CreatureRepo) :
+    ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return if (modelClass.isAssignableFrom(CreatureViewModel::class.java)) {

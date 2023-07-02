@@ -3,18 +3,18 @@ package com.saurav.therickandmorty_sauravc.activity
 import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Pair
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.saurav.therickandmorty_sauravc.R
-import com.saurav.therickandmorty_sauravc.databinding.ActivityMainBinding
-import com.saurav.therickandmorty_sauravc.databinding.CreatureMiniCardBinding
 import com.saurav.therickandmorty_sauravc.adapter.CreatureAdapter
 import com.saurav.therickandmorty_sauravc.beans.Creature
+import com.saurav.therickandmorty_sauravc.databinding.ActivityMainBinding
+import com.saurav.therickandmorty_sauravc.databinding.CreatureMiniCardBinding
 import com.saurav.therickandmorty_sauravc.utils.Constants
 import com.saurav.therickandmorty_sauravc.utils.Utils.Companion.checkInternet
 import com.saurav.therickandmorty_sauravc.utils.Utils.Companion.hideKeyboard
@@ -57,7 +57,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun shouldLoadMoreCreatures(): Boolean {
-        val lastVisiblePos = (binding.rvList.layoutManager as LinearLayoutManager).findLastVisibleItemPosition()
+        val lastVisiblePos =
+            (binding.rvList.layoutManager as LinearLayoutManager).findLastVisibleItemPosition()
         // not loading from net & only 2 card left to come on screen out of loaded ones.
         return (!(viewModel.getLoading().value)!! && adapter.itemCount - lastVisiblePos < 2) //PageSize & debounce/singleCall
     }
@@ -89,7 +90,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun handleCardClicks() {
-        adapter.attachCallback { data:Creature?, card:CreatureMiniCardBinding ->
+        adapter.attachCallback { data: Creature?, card: CreatureMiniCardBinding ->
             data?.let {
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -103,6 +104,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
     private fun detailsWithoutEffect(it: Creature) {
         // plain next page
         startActivity(Intent(this, CreatureDetail::class.java).apply {

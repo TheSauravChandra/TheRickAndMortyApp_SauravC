@@ -11,7 +11,8 @@ import com.saurav.therickandmorty_sauravc.R
 import com.saurav.therickandmorty_sauravc.beans.Creature
 import com.saurav.therickandmorty_sauravc.databinding.CreatureMiniCardBinding
 
-class CreatureAdapter(private val context: Context) : RecyclerView.Adapter<CreatureAdapter.ViewHolder>() {
+class CreatureAdapter(private val context: Context) :
+    RecyclerView.Adapter<CreatureAdapter.ViewHolder>() {
     private var list = ArrayList<Creature>()
 
     // for shared animation we need views too, & next page needs data to show.
@@ -32,7 +33,8 @@ class CreatureAdapter(private val context: Context) : RecyclerView.Adapter<Creat
         diffRes.dispatchUpdatesTo(this)
     }
 
-    inner class ViewHolder(var binding: CreatureMiniCardBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(var binding: CreatureMiniCardBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun setData(data: Creature?) {
             data?.run {
@@ -42,7 +44,12 @@ class CreatureAdapter(private val context: Context) : RecyclerView.Adapter<Creat
                         .load(it)
                         .into(binding.ivPic)
                 } ?: run {
-                    binding.ivPic.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_android_black_24dp))
+                    binding.ivPic.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            context,
+                            R.drawable.ic_android_black_24dp
+                        )
+                    )
                 }
             }
 
@@ -68,7 +75,10 @@ class CreatureAdapter(private val context: Context) : RecyclerView.Adapter<Creat
 
     override fun getItemCount() = list.size
 
-    class CreatureDiffUtil(private val oldList: ArrayList<Creature>, private val newList: ArrayList<Creature>) : DiffUtil.Callback() {
+    class CreatureDiffUtil(
+        private val oldList: ArrayList<Creature>,
+        private val newList: ArrayList<Creature>
+    ) : DiffUtil.Callback() {
         override fun getOldListSize() = oldList.size
 
         override fun getNewListSize() = newList.size
