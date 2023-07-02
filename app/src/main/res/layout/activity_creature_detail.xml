@@ -1,9 +1,175 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".CreatureDetail">
+    xmlns:tools="http://schemas.android.com/tools">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <data>
+
+        <variable
+            name="name"
+            type="String" />
+
+        <variable
+            name="status"
+            type="String" />
+
+        <variable
+            name="gender"
+            type="String" />
+
+        <variable
+            name="species"
+            type="String" />
+
+        <variable
+            name="origin"
+            type="String" />
+
+        <variable
+            name="location"
+            type="String" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activity.CreatureDetail"
+        android:background="@color/black">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/materialCardView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="14dp"
+            android:clickable="true"
+            android:elevation="2dp"
+            android:transitionName="card"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="0dp"
+            app:layout_constraintBottom_toBottomOf="@id/space"
+            app:layout_constraintCircleRadius="10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageView
+            android:id="@+id/ivPic"
+            android:layout_width="220dp"
+            android:layout_height="220dp"
+            android:layout_margin="20dp"
+            android:background="@android:color/transparent"
+            android:transitionName="photo"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvName" />
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:fontFamily="serif-monospace"
+            android:gravity="center"
+            android:text="@{name, default = Unknown}"
+            android:textColor="@color/black"
+            android:textSize="32dp"
+            android:textStyle="bold"
+            android:transitionName="name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/materialCardView"
+            tools:text="Creature Name" />
+
+
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:fontFamily="serif-monospace"
+            android:text="@{`Status: ` + ((status==null)?``:status), default = ``}"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:visibility="@{(status==null)?View.GONE:View.VISIBLE}"
+            app:layout_constraintStart_toStartOf="@+id/ivPic"
+            app:layout_constraintTop_toBottomOf="@+id/ivPic"
+            tools:text="Status: ALIVE" />
+
+
+        <TextView
+            android:id="@+id/tvGender"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:fontFamily="serif-monospace"
+            android:text="@{ `Gender⚤: ` + ((gender==null)?``:gender), default = ``}"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:visibility="@{(gender==null)?View.GONE:View.VISIBLE}"
+            app:layout_constraintEnd_toEndOf="@+id/ivPic"
+            app:layout_constraintStart_toStartOf="@+id/ivPic"
+            app:layout_constraintTop_toBottomOf="@+id/tvStatus"
+            tools:text="Gender⚤: MALE" />
+
+        <TextView
+            android:id="@+id/tvSpecies"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:fontFamily="serif-monospace"
+            android:text="@{`Species: `+species, default = ``}"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:visibility="@{(species==null)?View.GONE:View.VISIBLE}"
+            app:layout_constraintEnd_toEndOf="@+id/ivPic"
+            app:layout_constraintStart_toStartOf="@+id/ivPic"
+            app:layout_constraintTop_toBottomOf="@+id/tvGender"
+            tools:text="Species: HUMAN" />
+
+
+        <TextView
+            android:id="@+id/tvOrigin"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:fontFamily="serif-monospace"
+            android:text="@{`ORIGIN: ` + origin, default = ``}"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:visibility="@{(origin==null)?View.GONE:View.VISIBLE}"
+            app:layout_constraintEnd_toEndOf="@+id/ivPic"
+            app:layout_constraintStart_toStartOf="@+id/ivPic"
+            app:layout_constraintTop_toBottomOf="@+id/tvSpecies"
+            tools:text="Origin: EARTH" />
+
+
+        <TextView
+            android:id="@+id/tvLocation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:fontFamily="serif-monospace"
+            android:text="@{`Location: `+location, default = ``}"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:visibility="@{(location==null)?View.GONE:View.VISIBLE}"
+            app:layout_constraintEnd_toEndOf="@+id/ivPic"
+            app:layout_constraintStart_toStartOf="@+id/ivPic"
+            app:layout_constraintTop_toBottomOf="@+id/tvOrigin"
+            tools:text="Location: XYZ" />
+
+        <Space
+            android:id="@+id/space"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvLocation" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

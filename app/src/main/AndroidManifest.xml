@@ -16,7 +16,7 @@
         android:theme="@style/Theme.TheRickAndMortySauravC"
         tools:targetApi="31">
         <activity
-            android:name=".CreatureDetail"
+            android:name=".activity.CreatureDetail"
             android:exported="false" />
         <activity
             android:name=".activity.MainActivity"
