@@ -10,16 +10,16 @@ import kotlinx.coroutines.*
 class CreatureViewModel(private val mainRepository: CreatureRepo) : ViewModel() {
     var pageNo = 1
 
-    val errorMessage = MutableLiveData<String>()
-    val creatureList = MutableLiveData(ArrayList<Creature>())
-    val loading = MutableLiveData(false)
-    var job: Job? = null
+    private val errorMessage = MutableLiveData<String>()
+    private val creatureList = MutableLiveData(ArrayList<Creature>())
+    private val loading = MutableLiveData(false)
+    private var job: Job? = null
 
     fun getErr(): LiveData<String> = errorMessage
     fun getLoading(): LiveData<Boolean> = loading
     fun getCreatureList(): LiveData<ArrayList<Creature>> = creatureList
 
-    val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
+    private val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
         onError("Exception handled: ${throwable.localizedMessage}")
     }
 
