@@ -1,6 +1,6 @@
 package com.saurav.therickandmorty_sauravc.retrofit
 
-import com.mocklets.pluto.PlutoInterceptor
+//import com.mocklets.pluto.PlutoInterceptor
 import com.saurav.therickandmorty_sauravc.application.AppContext
 import com.saurav.therickandmorty_sauravc.interceptors.CacheInterceptor
 import com.saurav.therickandmorty_sauravc.interceptors.ForceCacheInterceptor
@@ -16,7 +16,7 @@ object RetrofitHelper {
 
     private fun getRetrofit(): Retrofit {
         val client = OkHttpClient.Builder()
-            .addInterceptor(PlutoInterceptor())
+//            .addInterceptor(PlutoInterceptor())
             .cache(Cache(File(AppContext.getContext().cacheDir, "http-cache"), 10L * 1024L * 1024L)) // 10 MiB
             .addNetworkInterceptor(CacheInterceptor()) // only if Cache-Control header is not enabled from the server
             .addInterceptor(ForceCacheInterceptor())
