@@ -8,7 +8,7 @@ import com.saurav.therickandmorty_sauravc.repo.CreatureRepo
 import kotlinx.coroutines.*
 
 class CreatureViewModel(private val mainRepository: CreatureRepo) : ViewModel() {
-    var pageNo = 1
+    private var pageNo = 0
 
     private val errorMessage = MutableLiveData<String>()
     private val creatureList = MutableLiveData(ArrayList<Creature>())
@@ -18,6 +18,7 @@ class CreatureViewModel(private val mainRepository: CreatureRepo) : ViewModel() 
     fun getErr(): LiveData<String> = errorMessage
     fun getLoading(): LiveData<Boolean> = loading
     fun getCreatureList(): LiveData<ArrayList<Creature>> = creatureList
+    fun getCurrentPageNo() = pageNo
 
     private val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
         onError("Exception handled: ${throwable.localizedMessage}")

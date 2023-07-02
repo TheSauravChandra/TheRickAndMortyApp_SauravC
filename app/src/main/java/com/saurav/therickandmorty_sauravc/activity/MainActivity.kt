@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
     private fun shouldLoadMoreCreatures(): Boolean {
         val lastVisiblePos = (binding.rvList.layoutManager as LinearLayoutManager).findLastVisibleItemPosition()
         // not loading from net & only 2 card left to come on screen out of loaded ones.
-        return (!(viewModel.loading.value)!! && adapter.itemCount - lastVisiblePos < 2) //PageSize & debounce/singleCall
+        return (!(viewModel.getLoading().value)!! && adapter.itemCount - lastVisiblePos < 2) //PageSize & debounce/singleCall
     }
 
     private fun fetchCreatures() {
@@ -128,7 +128,7 @@ class MainActivity : AppCompatActivity() {
             // diff util now will handle updations by min. effort.
             adapter.updateList(it)
             // ux: indicate more available by little scroll
-            if (viewModel.pageNo > 2)
+            if (viewModel.getCurrentPageNo() > 2)
                 binding.rvList.smoothScrollBy(0, 250)
             else // first time keyboard hide.
                 hideKeyboard(this, currentFocus)
